@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 
+class ShowUser extends Component {
+  render() {
+    return <h2 onDoubleClick={this.props.view.edit}>{ this.props.user.fullName() }</h2>;
+  }
+}
+
+class EditUser extends Component {
+  render() {
+    return <div>
+      <input className='edit-field' value={ this.props.user.firstName } />
+      <input className='edit-field' value={ this.props.user.lastName } />
+    </div>
+  }
+}
+
 class UserView extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      view: 'show'
+      view: <ShowUser user={ this.props.user } view={this} />
     };
 
     this.edit = this.edit.bind(this);
@@ -13,27 +28,15 @@ class UserView extends Component {
 
   edit() {
     this.setState( {
-      view: 'edit'
+      view: <EditUser user={ this.props.user } />
     });
   }
 
   render() {
-    var view;
-
-    if(this.state.view === 'show') {
-      view = <h2 onDoubleClick={this.edit}>{ this.props.user.fullName() }</h2>;
-    } else {
-      view = <div>
-          <input className='edit-field' value={ this.props.user.firstName } />
-          <input className='edit-field' value={ this.props.user.lastName } />
-        </div>;
-    }
-
     return <div className="user-view">
-      { view }
+      { this.state.view }
     </div>;
   }
-
 }
 
 export default UserView;

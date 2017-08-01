@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UserView from './components/userView';
+import User from './models/user';
 
 class App extends Component {
   render() {
+    var user = new User({
+      firstName: 'Joe',
+      lastName: 'Perkins'
+    });
+
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <UserView user= { user } />
     );
   }
 }
