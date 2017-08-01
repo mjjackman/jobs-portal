@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class ShowUser extends Component {
   render() {
-    return <h2 onDoubleClick={this.props.view.edit}>{ this.props.user.fullName() }</h2>;
+    return <h2 onDoubleClick={this.props.coolBeans.edit}>{ this.props.user.fullName() }</h2>;
   }
 }
 
@@ -20,7 +20,7 @@ class UserView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: <ShowUser user={ this.props.user } view={this} />
+      view: <ShowUser user={ this.props.user } coolBeans={this} />
     };
 
     this.edit = this.edit.bind(this);
