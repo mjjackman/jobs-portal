@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
@@ -11,8 +12,8 @@ describe("userView component", function() {
 
   beforeEach(function() {
     user = new User({
-      firstName: 'Joe',
-      lastName: 'Perkins'
+      firstName: 'Brian',
+      lastName: 'Johnson'
     });
   });
 
@@ -26,7 +27,7 @@ describe("userView component", function() {
     it("displays the user's name in a heading", function() {
       component = mount(<UserView user={ user } />);
       expect(component.find('h2').length).to.eq(1);
-      expect(component.find('h2').text()).to.eq('Joe Perkins');
+      expect(component.find('h2').html()).contains('Brian Johnson');
     });
   });
 
@@ -40,9 +41,8 @@ describe("userView component", function() {
       const inputs = component.find("input.edit-field");
 
       expect(inputs).to.have.length(2);
-      expect(inputs.first().node.value).to.eq('Joe');
-      expect(inputs.last().node.value).to.eq('Perkins');
+      expect(inputs.first().node.value).to.eq('Brian');
+      expect(inputs.last().node.value).to.eq('Johnson');
     });
   });
-
 });
