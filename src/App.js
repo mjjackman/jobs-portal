@@ -7,20 +7,6 @@ import ProjectView from './components/projectView';
 import Project from './models/project';
 
 class App extends Component {
-
-  componentDidMount() {
-    fetch('http://localhost:10524/users', {
-      credentials: 'include',
-      headers: {
-        'content-type': 'application/json',
-        'accepts': 'application/json', 
-        'Access-Control-Allow-Origin': 'http://localhost:10524'
-      }
-    }).then((response) => {
-      console.log(response);
-      return response.json();
-    });
-  }
   render() {
     var user;
     var project;

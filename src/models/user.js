@@ -7,7 +7,7 @@ class User {
     this.firstName = options.firstName;
     this.lastName = options.lastName;
     this.bio = options.bio;
-    this.tagline = options.tagline;
+    this.tagLine = options.tagLine;
     this.store = options.store;
   }
 
@@ -20,29 +20,28 @@ class User {
     this.firstName = args.firstName;
     this.lastName = args.lastName;
     this.bio = args.bio;
-    this.tagline = args.tagline;
+    this.tagLine = args.tagLine;
    }
 
-   save() {
-    if (this.id === undefined) this.id = uuidv1().toString();
-
+  save() {
+    if (this.id === undefined) { this.id = uuidv1() };
     this.store.setItem(this.id, this.toJSON());
-   }
+  }
 
-   toJSON() {
+  toJSON() {
     return JSON.stringify(this.attributes());
-   }
+  }
 
-   attributes() {
+  attributes() {
     return {
       id: this.id,
       firstName: this.firstName,
       lastName: this.lastName, 
       bio: this.bio,
-      tagline: this.tagline,
+      tagLine: this.tagLine,
       store: this.store
     }
-   }
+  }
 
 }
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
-import { mount, shallow } from 'enzyme';
+import { mount, shallow, render } from 'enzyme';
 import UserView from '../../src/components/userView';
 import User from '../../src/models/user';
 
@@ -13,7 +13,9 @@ describe("userView component", function() {
   beforeEach(function() {
     user = new User({
       firstName: 'Brian',
-      lastName: 'Johnson'
+      lastName: 'Johnson', 
+      bio: 'Full Stack Web Developer from London, UK',
+      tagline: 'Here I am'
     });
   });
 
@@ -25,7 +27,7 @@ describe("userView component", function() {
     });
 
     it("displays the user's name in a heading", function() {
-      component = mount(<UserView user={ user } />);
+      component = render(<UserView user={ user } />);
       expect(component.find('h2').length).to.eq(1);
       expect(component.find('h2').html()).contains('Brian Johnson');
     });

@@ -9,7 +9,7 @@
         "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "mocha test/* --compilers js:babel-core/register -r jsdom-global/register",
+        "test": "mocha test/* --compilers js:babel-core/register -r jsdom-global/register --require isomorphic-fetch",
         "eject": "react-scripts eject"
     },
     "author": "Apache Cordova Team",
