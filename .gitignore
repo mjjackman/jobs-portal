@@ -3,10 +3,10 @@ node_modules/
 npm-debug.log
 
 # Ignore Cordova generated output files
-build/**
-platforms/**
-plugins/**
-resources/signing
+**/build
+**/platforms
+**/plugins
+**/res
 
 # Ignore SASS-generated CSS output files
 src/**/*.css
