@@ -17,17 +17,13 @@ class App extends Component {
 
     if(localStorage.getItem(1) !== null) {
       user = new User(JSON.parse(localStorage.getItem(1)));
-
     } else {
-
       user = new User({
         firstName: 'Brian',
         lastName: 'Johnson',
         bio: 'Full Stack Web Developer from London, UK',
         tagline: 'Here I am'
-      });
-
-      
+      });      
     }
 
     return (

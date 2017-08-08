@@ -24,7 +24,25 @@ class User {
 
   save() {
     if (this.id === undefined) { this.id = uuidv1() };
-    this.store.setItem(this.id, this.toJSON());
+    var userKeyValues = {};
+    var user = this;
+    Object.keys(this).forEach(function(key) {
+      userKeyValues[key] = user[key];
+    });
+    fetch('http://localhost:4000/users/' + this.id, {
+      credentials: 'include',
+      method: "PUT",
+      headers: {
+        'content-type': 'application/json',
+        'accepts': 'application/json', 
+        'Access-Control-Allow-Origin': 'http://localhost:4000'
+      },
+      body: JSON.stringify({user: userKeyValues})
+    }).then((response) => {
+      return response.json();
+    }).then((json_response) => {
+      user.store.setItem(user.id, user.toJSON());
+    });
   }
 
   toJSON() {
