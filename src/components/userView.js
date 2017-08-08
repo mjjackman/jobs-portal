@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import User from './../models/user';
 
 class UserView extends Component {
 
@@ -15,12 +14,12 @@ class UserView extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:10524/users', {
+    fetch('http://localhost:4000/users', {
       credentials: 'include',
       headers: {
         'content-type': 'application/json',
         'accepts': 'application/json', 
-        'Access-Control-Allow-Origin': 'http://localhost:10524'
+        'Access-Control-Allow-Origin': 'http://localhost:4000'
       }
     }).then((response) => {
       return response.json();
@@ -30,11 +29,8 @@ class UserView extends Component {
   }
 
   setUser(jsonResponse) {
-    var userProperties = {};
-    Object.keys(jsonResponse).map(function(data) {
-      return userProperties[snakeToCamel(data)] = jsonResponse[data];
-    });
-    var user = new User(userProperties);
+    var user = this.state.user;
+    user.update(jsonResponse); 
     this.setState({
       user: user,
       view: <ShowUser userView={this} />
@@ -106,10 +102,6 @@ class EditUser extends Component {
       <input className='tagLine' name='tagLine' defaultValue={this.state.userView.state.user.tagLine} />
     </div>
   }
-}
-
-function snakeToCamel(s){
-   return s.replace(/(_\w)/g, function(m){return m[1].toUpperCase();});
 }
 
 export default UserView;

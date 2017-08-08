@@ -8,7 +8,7 @@ class User {
     this.lastName = options.lastName;
     this.bio = options.bio;
     this.tagLine = options.tagLine;
-    this.store = options.store;
+    this.store = localStorage;
   }
 
   fullName() {
@@ -16,12 +16,11 @@ class User {
   }
 
   update(args) {
-    // this.id = args.id;
-    this.firstName = args.firstName;
-    this.lastName = args.lastName;
-    this.bio = args.bio;
-    this.tagLine = args.tagLine;
-   }
+    var user = this;
+    Object.keys(args).map(function(data) {
+      return user[user.snakeToCamel(data)] = args[data];
+    });
+  }
 
   save() {
     if (this.id === undefined) { this.id = uuidv1() };
@@ -43,6 +42,9 @@ class User {
     }
   }
 
+  snakeToCamel(s){
+    return s.replace(/(_\w)/g, function(m){return m[1].toUpperCase();});
+  }
 }
 
 export default User;

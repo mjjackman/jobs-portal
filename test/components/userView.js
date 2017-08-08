@@ -1,4 +1,4 @@
-
+import { LocalStorage } from 'node-localStorage';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { expect } from 'chai';
@@ -9,6 +9,7 @@ import User from '../../src/models/user';
 describe("userView component", function() {
   var component;
   var user;
+  global.localStorage = new LocalStorage('test/test');
 
   beforeEach(function() {
     user = new User({
