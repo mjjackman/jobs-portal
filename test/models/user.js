@@ -10,8 +10,8 @@ describe('User', function() {
   beforeEach(function() {
     localStorage = new LocalStorage('test/test');
     user = new User({
-      firstName: 'Dan',
-      lastName: 'Garland',
+      firstName: 'Ben',
+      lastName: 'Dover',
       bio: 'Full Stack Web Developer',
       tagLine: 'Here I am', 
       store: localStorage
@@ -19,15 +19,15 @@ describe('User', function() {
   });
 
   it('provides the firstName', function() {
-    expect(user.firstName).to.eq('Dan')
+    expect(user.firstName).to.eq('Ben')
   });
 
   it('provides the lastName', function() {
-    expect(user.lastName).to.eq('Garland')
+    expect(user.lastName).to.eq('Dover')
   });
 
   it('provides the fullName', function() {
-    expect(user.fullName()).to.eq('Dan Garland')
+    expect(user.fullName()).to.eq('Ben Dover')
   });
 
   it('provides the bio', function() {

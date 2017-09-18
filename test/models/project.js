@@ -6,11 +6,13 @@ describe('Project', function() {
 
   beforeEach(function() {
     project = new Project({
-      projectName: 'Around The World in 20 days'
+      projectName: 'Around The World in 20 days',
+      projectUrl: 'www.http://blabla.com'
     });
   });
 
   it('provides the projectName', function() {
     expect(project.projectName).to.eq('Around The World in 20 days')
+    expect(project.projectUrl).to.eq('www.http://blabla.com')
   });
 });
